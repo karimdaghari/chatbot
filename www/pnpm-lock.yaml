@@ -11,6 +11,7 @@ specifiers:
   postcss: ^8.4.13
   react: ^18.1.0
   react-dom: ^18.1.0
+  react-hook-form: ^7.31.0
   react-icons: ^4.3.1
   react-scripts: 5.0.1
   tailwindcss: ^3.0.24
@@ -25,6 +26,7 @@ dependencies:
   classnames: 2.3.1
   react: 18.1.0
   react-dom: 18.1.0_react@18.1.0
+  react-hook-form: 7.31.0_react@18.1.0
   react-icons: 4.3.1_react@18.1.0
   react-scripts: 5.0.1_oxzyc36t6ywqirvp35nas5bcte
   typescript: 4.6.4
@@ -7760,6 +7762,15 @@ packages:
 
   /react-error-overlay/6.0.11:
     resolution: {integrity: sha512-/6UZ2qgEyH2aqzYZgQPxEnz33NJ2gNsnHA2o5+o4wW9bLM/JYQitNP9xPhsXwC08hMMovfGe/8retsdDsczPRg==}
+    dev: false
+
+  /react-hook-form/7.31.0_react@18.1.0:
+    resolution: {integrity: sha512-dDZSOk0eRf8z2EFt/XVA+HnmffxMYSWQaVX5EXCp2ozYtqyqrCDdfQRVBoVC43YyKIDtWfbiRcFkMvnvxv9q5g==}
+    engines: {node: '>=12.22.0'}
+    peerDependencies:
+      react: ^16.8.0 || ^17 || ^18
+    dependencies:
+      react: 18.1.0
     dev: false
 
   /react-icons/4.3.1_react@18.1.0:
