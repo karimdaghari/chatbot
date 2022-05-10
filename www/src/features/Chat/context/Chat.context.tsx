@@ -1,16 +1,17 @@
 import { createContext, ReactNode, useContext, useState } from 'react';
 
+type TAB = 'INSTANT_ANSWERS' | 'CHAT';
+
 interface IContext {
-  openTab: 'INSTANT_ANSWERS' | 'CHAT';
-  setOpenTab: (value: IContext['openTab']) => unknown;
+  openTab: TAB;
+  setOpenTab: (value: TAB) => unknown;
 }
 
 const ChatContext = createContext<IContext | undefined>(undefined);
 ChatContext.displayName = 'TalentProfileContext';
 
 export function ChatProvider({ children }: { children: ReactNode }) {
-  const [openTab, setOpenTab] =
-    useState<IContext['openTab']>('INSTANT_ANSWERS');
+  const [openTab, setOpenTab] = useState<TAB>('INSTANT_ANSWERS');
 
   return (
     <ChatContext.Provider value={{ openTab, setOpenTab }}>
