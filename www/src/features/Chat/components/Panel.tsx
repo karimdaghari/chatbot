@@ -1,5 +1,6 @@
 import { Tabs } from '../../../components';
 import { useChatContext } from '..';
+import PanelInstantAnswers from './PanelInstantAnswers';
 
 export default function Panel() {
   const { setOpenTab } = useChatContext();
@@ -10,7 +11,7 @@ export default function Panel() {
       tabs={[
         {
           title: 'Instant answers',
-          content: '',
+          content: <PanelInstantAnswers />,
           onClick: () => setOpenTab('INSTANT_ANSWERS')
         },
         {
