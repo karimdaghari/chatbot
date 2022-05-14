@@ -11,12 +11,18 @@ export default function Panel() {
       tabs={[
         {
           title: 'Instant answers',
-          content: <PanelInstantAnswers />,
+          content: (
+            <div className='overflow-y-auto max-h-72 overscroll-y-contain'>
+              <PanelInstantAnswers />
+            </div>
+          ),
           onClick: () => setOpenTab('INSTANT_ANSWERS')
         },
         {
           title: 'Chat',
-          content: '',
+          content: (
+            <div className='overflow-y-auto max-h-72 overscroll-y-contain'></div>
+          ),
           onClick: () => setOpenTab('CHAT')
         }
       ]}

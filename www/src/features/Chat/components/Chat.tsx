@@ -18,7 +18,7 @@ export default function Chat() {
             </Popover.Button>
             <Popover.Panel
               as={Card}
-              className='absolute right-0 z-10 flex flex-col space-y-2 min-w-max bottom-16'>
+              className='absolute right-0 z-10 flex flex-col space-y-2 bottom-16 w-96'>
               <Panel />
               <TextBox />
             </Popover.Panel>

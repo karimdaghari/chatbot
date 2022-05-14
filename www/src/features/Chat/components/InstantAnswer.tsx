@@ -5,9 +5,9 @@ interface IProps {
 
 export default function InstantAnswer({ question, answer }: IProps) {
   return (
-    <div>
-      <p className='font-medium'>Q: {question}</p>
-      <p>A: {answer}</p>
+    <div className='p-4 -space-y-1 hover:bg-slate-100 hover:rounded-lg'>
+      <p className='font-medium'> {question}</p>
+      <p>{answer}</p>
     </div>
   );
 }

@@ -17,7 +17,7 @@ export default function PanelInstantAnswers() {
   );
 
   return (
-    <div className='space-y-2'>
+    <div className='space-y-1'>
       {questionsAndAnswers.map(({ q, a }) => (
         <InstantAnswer key={q} question={q} answer={a} />
       ))}
