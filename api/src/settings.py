@@ -33,6 +33,7 @@ CORS_ALLOW_ALL_ORIGINS = True
 
 INSTALLED_APPS = [
     'faq.apps.FaqConfig',
+    'bot.apps.BotConfig',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -47,11 +48,16 @@ INSTALLED_APPS = [
 CHATTERBOT = {
     'name': 'Support Bot',
     'logic_adapters': [
-        'chatterbot.logic.MathematicalEvaluation',
-        'chatterbot.logic.TimeLogicAdapter',
-        'chatterbot.logic.BestMatch'
+        'chatterbot.logic.BestMatch',
+
     ],
-    'django_app_name': 'bot'
+    'filters': [
+        'chatterbot.filters.RepetitiveResponseFilter',
+    ],
+    'trainer': 'chatterbot.trainers.ChatterBotCorpusTrainer',
+    'training_data': [
+        'chatterbot.corpus.english'
+    ]
 }
 
 
