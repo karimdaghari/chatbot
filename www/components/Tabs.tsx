@@ -17,7 +17,7 @@ interface IProps {
 export default function Tabs({ tabs, defaultIndex }: IProps) {
   return (
     <Tab.Group defaultIndex={defaultIndex}>
-      <Tab.List className='flex items-center w-full space-x-2'>
+      <Tab.List className='flex items-center justify-center w-full space-x-2'>
         {tabs.map(({ title, onClick }) => (
           <Tab key={title} as={Fragment}>
             {({ selected }) => (
