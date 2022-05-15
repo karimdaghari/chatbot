@@ -9,23 +9,23 @@ interface IContext {
   setSearchTerm: (term: string | null) => unknown;
 }
 
-const ChatContext = createContext<IContext | undefined>(undefined);
-ChatContext.displayName = 'TalentProfileContext';
+const AssistantContext = createContext<IContext | undefined>(undefined);
+AssistantContext.displayName = 'AssistantContext';
 
-export function ChatProvider({ children }: { children: ReactNode }) {
+export function AssistantProvider({ children }: { children: ReactNode }) {
   const [openTab, setOpenTab] = useState<TAB>('INSTANT_ANSWERS');
   const [searchTerm, setSearchTerm] = useState<string | null>(null);
 
   return (
-    <ChatContext.Provider
+    <AssistantContext.Provider
       value={{ openTab, setOpenTab, searchTerm, setSearchTerm }}>
       {children}
-    </ChatContext.Provider>
+    </AssistantContext.Provider>
   );
 }
 
-export function useChatContext() {
-  const ctx = useContext(ChatContext);
-  if (ctx === undefined) throw new Error('ChatContext is undefined');
+export function useAssistantContext() {
+  const ctx = useContext(AssistantContext);
+  if (ctx === undefined) throw new Error('AssistantContext is undefined');
   return ctx;
 }

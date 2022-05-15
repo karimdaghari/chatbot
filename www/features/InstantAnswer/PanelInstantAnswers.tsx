@@ -1,9 +1,11 @@
 import { useMemo } from 'react';
-import { useChatContext, useGetInstantAnswers, InstantAnswer } from '..';
+import { useAssistantContext } from '../Assistant';
+import useGetInstantAnswers from './useGetInstantAnswers';
+import InstantAnswer from './InstantAnswer';
 
 export default function PanelInstantAnswers() {
   const { data } = useGetInstantAnswers();
-  const { searchTerm } = useChatContext();
+  const { searchTerm } = useAssistantContext();
 
   const questionsAndAnswers = useMemo(
     () =>

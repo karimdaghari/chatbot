@@ -1,8 +1,8 @@
 import { Input } from '@components/index';
-import { useChatContext } from '..';
+import { useAssistantContext } from '..';
 
 export default function TextBox() {
-  const { openTab, setSearchTerm } = useChatContext();
+  const { openTab, setSearchTerm } = useAssistantContext();
 
   return (
     <div className='flex items-center w-full'>

@@ -1,8 +1,10 @@
 import { Tabs } from '@components/index';
-import { useChatContext, PanelInstantAnswers } from '..';
+import { Chat } from '@features/Chat';
+import { PanelInstantAnswers } from '@features/InstantAnswer';
+import { useAssistantContext } from '..';
 
 export default function Panel() {
-  const { setOpenTab } = useChatContext();
+  const { setOpenTab } = useAssistantContext();
 
   return (
     <Tabs
@@ -20,7 +22,9 @@ export default function Panel() {
         {
           title: 'Chat',
           content: (
-            <div className='overflow-y-auto max-h-72 overscroll-y-contain'></div>
+            <div className='p-4 overflow-y-auto max-h-72 overscroll-y-contain'>
+              <Chat />
+            </div>
           ),
           onClick: () => setOpenTab('CHAT')
         }
