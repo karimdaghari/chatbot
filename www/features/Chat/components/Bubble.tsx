@@ -22,9 +22,9 @@ export default function Bubble({ avatar, type, isWriting, message }: IProps) {
         />
       </div>
       <div
-        className={cn('px-4 py-2 rounded-lg max-w-fit', {
+        className={cn('px-4 py-2 rounded-lg max-w-max', {
           'bg-slate-100 rounded-bl-none': type === 'RECEIVED',
-          'bg-blue-400 rounded-tr-none text-white': type === 'SENT'
+          'bg-blue-400 rounded-br-none text-white': type === 'SENT'
         })}>
         <p>{message}</p>
       </div>
