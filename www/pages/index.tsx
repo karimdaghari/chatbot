@@ -1,7 +1,6 @@
-import { Chat } from './features/Chat';
-import './index.css';
+import { Chat } from '@features/Chat';
 
-function App() {
+export default function Index() {
   return (
     <div className='relative flex flex-col items-center justify-center h-screen bg-green-200'>
       <p>Hello!</p>
@@ -11,5 +10,3 @@ function App() {
     </div>
   );
 }
-
-export default App;

@@ -1,5 +1,5 @@
-import { Input } from '../../../components';
-import { useChatContext } from '../context/Chat.context';
+import { Input } from '@components/index';
+import { useChatContext } from '..';
 
 export default function TextBox() {
   const { openTab, setSearchTerm } = useChatContext();

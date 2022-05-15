@@ -1,6 +1,5 @@
-import { Tabs } from '../../../components';
-import { useChatContext } from '..';
-import PanelInstantAnswers from './PanelInstantAnswers';
+import { Tabs } from '@components/index';
+import { useChatContext, PanelInstantAnswers } from '..';
 
 export default function Panel() {
   const { setOpenTab } = useChatContext();

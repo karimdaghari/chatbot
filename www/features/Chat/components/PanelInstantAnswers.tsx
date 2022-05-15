@@ -1,6 +1,5 @@
 import { useMemo } from 'react';
-import { useChatContext, useGetInstantAnswers } from '..';
-import InstantAnswer from './InstantAnswer';
+import { useChatContext, useGetInstantAnswers, InstantAnswer } from '..';
 
 export default function PanelInstantAnswers() {
   const { data } = useGetInstantAnswers();

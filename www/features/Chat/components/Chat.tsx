@@ -1,6 +1,6 @@
 import { Popover } from '@headlessui/react';
 import { FiMessageCircle, FiX } from 'react-icons/fi';
-import { Card } from '../../../components';
+import { Card } from '@components/index';
 import { Panel, TextBox, ChatProvider } from '..';
 
 export default function Chat() {
