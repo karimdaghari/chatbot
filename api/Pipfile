@@ -8,6 +8,7 @@ chatterbot = "==1.0.4"
 chatterbot-corpus = "*"
 django = "*"
 djangorestframework = "*"
+django-cors-headers = "*"
 
 [dev-packages]
 autopep8 = "*"
