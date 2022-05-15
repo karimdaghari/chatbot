@@ -1,17 +1,25 @@
-import { faker } from '@faker-js/faker';
+import useFetch from 'hooks/useFetch';
+import { useMemo } from 'react';
+import { IResult } from './types';
 
 export default function useGetInstantAnswers() {
-  const questionsAndAnswers = [
-    ...Array(
-      +faker.random.numeric(2, {
-        allowLeadingZeros: false,
-        bannedDigits: ['0']
-      })
-    ).keys()
-  ].map(() => ({
-    q: faker.lorem.sentence().replace('.', '?'),
-    a: faker.lorem.sentence()
-  }));
+  const { data: _data, ...info } = useFetch<IResult[]>({
+    key: 'faq/questions',
+    endpoint: '/faq/answer/'
+  });
 
-  return { data: questionsAndAnswers };
+  const data = useMemo(
+    () =>
+      _data?.map(({ id, text: answer, question: { text: question } }) => ({
+        id,
+        question,
+        answer
+      })),
+    [_data]
+  );
+
+  return {
+    data,
+    ...info
+  };
 }
