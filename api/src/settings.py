@@ -40,8 +40,20 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'corsheaders',
-    'rest_framework'
+    'rest_framework',
+    'chatterbot.ext.django_chatterbot'
 ]
+
+CHATTERBOT = {
+    'name': 'Support Bot',
+    'logic_adapters': [
+        'chatterbot.logic.MathematicalEvaluation',
+        'chatterbot.logic.TimeLogicAdapter',
+        'chatterbot.logic.BestMatch'
+    ],
+    'django_app_name': 'bot'
+}
+
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
