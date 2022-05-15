@@ -21,11 +21,7 @@ export default function Panel() {
         },
         {
           title: 'Chat',
-          content: (
-            <div className='p-4 overflow-y-auto max-h-72 overscroll-y-contain'>
-              <Chat />
-            </div>
-          ),
+          content: <Chat />,
           onClick: () => setOpenTab('CHAT')
         }
       ]}
