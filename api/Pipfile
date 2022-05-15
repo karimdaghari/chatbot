@@ -10,6 +10,7 @@ chatterbot-corpus = "*"
 chatterbot = "==1.0.4"
 
 [dev-packages]
+autopep8 = "*"
 
 [requires]
 python_version = "3.8"
