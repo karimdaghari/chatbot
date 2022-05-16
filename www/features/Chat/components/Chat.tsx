@@ -68,17 +68,16 @@ export default function Chat() {
                   <div className='flex justify-end w-full'>
                     <Bubble
                       type='SENT'
-                      avatar='https://static.botsrv2.com/website/img/quriobot_favicon.1727b193.png'
                       className='last:bg-blue-600'
                       message={text}
                     />
                   </div>
-                  <Bubble
-                    type='RECEIVED'
-                    avatar='https://static.botsrv2.com/website/img/quriobot_favicon.1727b193.png'
-                    message={bot_reply}
-                  />
                 </div>
+                <Bubble
+                  type='RECEIVED'
+                  avatar='https://static.botsrv2.com/website/img/quriobot_favicon.1727b193.png'
+                  message={bot_reply}
+                />
               </div>
             ))}
           </>
