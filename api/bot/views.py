@@ -17,6 +17,8 @@ class BotList(APIView):
 
     trainer = ChatterBotCorpusTrainer(chatbot)
 
+    trainer.train('chatterbot.corpus.english')
+
     def get(self, request):
         statements = DjangoChatterbotStatement.objects.all()
         serializer = DjangoChatterbotStatementSerializer(statements, many=True)
