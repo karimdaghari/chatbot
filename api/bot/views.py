@@ -34,7 +34,16 @@ class BotList(APIView):
                 'text': text,
                 'bot_reply': bot_reply
             }
-        mappedData = map(shapeData, data)
+
+        def showOnlyCurrentConversation(datum: any):
+            conversation: str = datum['conversation']
+            if conversation == 'training':
+                return False
+            else:
+                return True
+
+        filteredData = filter(showOnlyCurrentConversation, data)
+        mappedData = map(shapeData, filteredData)
         return Response(mappedData)
 
     def post(self, request):
