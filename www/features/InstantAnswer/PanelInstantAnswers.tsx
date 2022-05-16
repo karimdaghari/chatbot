@@ -14,7 +14,8 @@ export default function PanelInstantAnswers() {
         ? data
         : data?.filter(
             ({ question: q, answer: a }) =>
-              q.includes(searchTerm) || a.includes(searchTerm)
+              q.toLowerCase().includes(searchTerm.toLowerCase()) ||
+              a.toLowerCase().includes(searchTerm.toLowerCase())
           ),
     [data, searchTerm]
   );
