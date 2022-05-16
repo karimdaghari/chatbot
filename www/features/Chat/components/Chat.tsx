@@ -1,20 +1,27 @@
 import Input from '@components/Input';
 import fetcher from 'hooks/fetcher';
-import { Fragment } from 'react';
 import { useForm } from 'react-hook-form';
 import { FiSend } from 'react-icons/fi';
 import { useMutation } from 'react-query';
 import { useGetChatHistory } from '..';
 import Bubble from './Bubble';
 import { BiLoaderAlt } from 'react-icons/bi';
+import { useKey } from 'react-use';
+import { useRouter } from 'next/router';
 
 interface INewMessage {
   text: string;
 }
+
+type TNewMessage = Record<string | 'created_at', string>;
+
 export default function Chat() {
+  const { replace } = useRouter();
   const { data, refetch, isLoading } = useGetChatHistory();
+  console.log({ data });
+  const { register, handleSubmit, getValues, reset } = useForm<INewMessage>();
   const { mutateAsync: sendMessage } = useMutation<
-    unknown,
+    TNewMessage,
     unknown,
     INewMessage
   >(
@@ -25,11 +32,21 @@ export default function Chat() {
         body: JSON.stringify(input)
       }),
     {
-      onSuccess: async () => await refetch()
+      onSuccess: async ({ created_at }) => {
+        await refetch();
+        reset();
+        replace(`#${created_at}`, '', {
+          shallow: true
+        });
+      }
     }
   );
 
-  const { register, handleSubmit } = useForm<INewMessage>();
+  useKey('enter', async () => {
+    const { text } = getValues();
+    if (!text) return;
+    await sendMessage({ text });
+  });
 
   return (
     <div className='space-y-6'>
@@ -46,29 +63,32 @@ export default function Chat() {
               message='Welcome!'
             />
             {data?.map(({ created_at, bot_reply, text }) => (
-              <Fragment key={created_at}>
+              <div className='space-y-6' id={created_at} key={created_at}>
                 <div>
+                  <div className='flex justify-end w-full'>
+                    <Bubble
+                      type='SENT'
+                      avatar='https://static.botsrv2.com/website/img/quriobot_favicon.1727b193.png'
+                      className='last:bg-blue-600'
+                      message={text}
+                    />
+                  </div>
                   <Bubble
                     type='RECEIVED'
                     avatar='https://static.botsrv2.com/website/img/quriobot_favicon.1727b193.png'
                     message={bot_reply}
                   />
                 </div>
-                <div className='flex justify-end w-full'>
-                  <Bubble
-                    type='SENT'
-                    avatar='https://static.botsrv2.com/website/img/quriobot_favicon.1727b193.png'
-                    className='last:bg-blue-600'
-                    message={text}
-                  />
-                </div>
-              </Fragment>
+              </div>
             ))}
           </>
         )}
       </div>
       <form
-        onSubmit={handleSubmit(async (input) => await sendMessage(input))}
+        onSubmit={handleSubmit(async (input) => {
+          if (!input.text) return;
+          await sendMessage(input);
+        })}
         className='flex items-center w-full space-x-1.5'>
         <Input {...register('text')} placeholder='Ask a question...' />
         <button type='submit' className='p-3 bg-blue-500 rounded-full'>
