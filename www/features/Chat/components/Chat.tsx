@@ -18,7 +18,6 @@ type TNewMessage = Record<string | 'created_at', string>;
 export default function Chat() {
   const { replace } = useRouter();
   const { data, refetch, isLoading } = useGetChatHistory();
-  console.log({ data });
   const { register, handleSubmit, getValues, reset } = useForm<INewMessage>();
   const { mutateAsync: sendMessage } = useMutation<
     TNewMessage,
